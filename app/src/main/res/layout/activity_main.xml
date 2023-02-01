@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <Button
+        android:id="@+id/mainButton"
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/mainButtonText" />
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="350dp"
+        android:layout_height="325dp"
+        android:layout_below="@id/mainButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:paddingVertical="4dp">
+
+        <TableLayout
+            android:paddingVertical="4dp"
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/button_divider"
+            android:showDividers="middle"
+            />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/exitButton"
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/exit" />
+
+</RelativeLayout>

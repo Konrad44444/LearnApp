@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showSetName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:textSize="35sp"
+        android:textColor="@color/setNameText"
+        android:shadowColor="@color/textShadow"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        />
+
+    <Button
+        android:id="@+id/addElement"
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:text="@string/addElement"
+        android:layout_below="@id/showSetName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+    <Button
+        android:id="@+id/learn"
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:text="@string/learn"
+        android:layout_below="@id/addElement"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
+        android:id="@+id/deleteSet"
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:text="@string/deleteSet"
+        android:layout_below="@id/learn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
+        android:id="@+id/returnToMain"
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:text="@string/returnToMain"
+        android:layout_below="@id/deleteSet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        />
+</RelativeLayout>

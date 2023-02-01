@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addElementText"
+        android:text="@string/addElementText"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="70dp"
+        android:textColor="@color/setNameText"
+        android:shadowColor="@color/textShadow"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addDef"
+        android:layout_below="@id/addElementText"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/addDefHint"
+        android:textColorHint="@color/placeholder"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/setButtonBorder"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addDesc"
+        android:layout_below="@id/addDef"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/addDescHint"
+        android:textColorHint="@color/placeholder"
+        android:backgroundTint="@color/setButtonBorder"
+        />
+
+    <Button
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:id="@+id/addElementButton"
+        android:layout_below="@id/addDesc"
+        android:layout_centerHorizontal="true"
+        android:text="@string/addElementToDb"
+        android:layout_marginTop="50dp"
+        />
+
+    <Button
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:id="@+id/goToAddElementActivity"
+        android:layout_below="@id/addElementButton"
+        android:layout_centerHorizontal="true"
+        android:text="@string/returnToMain"
+        android:layout_marginTop="25dp"
+        />
+
+</RelativeLayout>

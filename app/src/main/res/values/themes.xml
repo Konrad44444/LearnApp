@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="MyTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/mainBackground</item>
+        <item name="colorPrimaryVariant">@color/mainBackground</item>
+        <item name="colorOnPrimary">@color/mainBackground</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/mainBackground</item>
+        <item name="colorSecondaryVariant">@color/mainBackground</item>
+        <item name="colorOnSecondary">@color/mainBackground</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:background">@color/mainBackground</item>
+        <item name="buttonStyle">@style/MyThemeButton</item>
+    </style>
+
+    <style name="MyThemeButton" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingHorizontal">30dp</item>
+        <item name="android:paddingVertical">15dp</item>
+        <item name="android:background">@drawable/button_border</item>
+        <item name="android:textColor">@color/darkText</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="MyThemeSetButton" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingHorizontal">30dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:background">@drawable/set_button_border</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="marginHorizontal">4dp</item>
+    </style>
+
+    <style name="Theme.LearnApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.LearnApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.LearnApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

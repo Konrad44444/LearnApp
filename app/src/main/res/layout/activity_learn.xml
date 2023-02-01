@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:textColor="@color/darkText"
+            android:shadowColor="@color/textShadow"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/def"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/desc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/setButtonBorder"
+            android:hint="@string/addDefHint"
+            android:textColorHint="@color/placeholder" />
+
+        <Button
+            android:id="@+id/readyButton"
+            style="@style/MyThemeButton"
+            android:layout_below="@id/def"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:elevation="5dp"
+            android:text="@string/readyButton" />
+
+        <RelativeLayout
+            android:id="@+id/check"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/border_green"
+            android:clickable="true"
+            android:minHeight="250dp"
+            android:visibility="gone"
+            android:elevation="6dp"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/cor"
+                android:layout_width="325dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:text="@string/correct"
+                android:textSize="12sp"
+                android:textColor="@color/testText"
+                android:background="@color/setButtonBack"/>
+
+            <TextView
+                android:id="@+id/correct"
+                android:layout_width="325dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cor"
+                android:paddingHorizontal="10dp"
+                android:textSize="25sp"
+                android:background="@color/setButtonBack"/>
+
+            <TextView
+                android:id="@+id/ins"
+                android:layout_width="325dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/correct"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:text="@string/inserted"
+                android:textSize="12sp"
+                android:textColor="@color/testText"
+                android:background="@color/setButtonBack"/>
+
+            <TextView
+                android:id="@+id/inserted"
+                android:layout_width="325dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ins"
+                android:paddingHorizontal="10dp"
+                android:textSize="25sp"
+                android:textColor="@color/greenBorder"
+                android:background="@color/setButtonBack"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

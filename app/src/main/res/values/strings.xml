@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">LearnApp</string>
+    <string name="mainButtonText">Dodaj zestaw</string>
+    <string name="addSetMainText">Dodawanie zestawu</string>
+    <string name="addSet">Dodaj zestaw</string>
+    <string name="addSetName">Podaj tytuł zestawu</string>
+    <string name="addElement">Dodaj pojęcie</string>
+    <string name="learn">Pisanie</string>
+    <string name="deleteSet">Usuń zestaw</string>
+    <string name="returnToMain">Wróć</string>
+    <string name="addElementText">Dodawanie pojęcia</string>
+    <string name="addDefHint">Podaj pojęcie</string>
+    <string name="addDescHint">Podaj definicję</string>
+    <string name="addElementToDb">Dodaj pojęcie</string>
+    <string name="readyButton">Gotowe</string>
+    <string name="correct">Poprawne:</string>
+    <string name="inserted">Podane:</string>
+    <string name="exit">Wyjdź</string>
+</resources>

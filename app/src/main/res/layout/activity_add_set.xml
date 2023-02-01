@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addSetMainText"
+        android:text="@string/addSetMainText"
+        android:textSize="35sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/setNameText"
+        android:shadowColor="@color/textShadow"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        android:layout_marginTop="100dp"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addSetNameInput"
+        android:layout_below="@id/addSetMainText"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/addSetName"
+        android:textColorHint="@color/placeholder"
+        android:backgroundTint="@color/setButtonBorder"
+        android:layout_marginTop="50dp"
+        />
+
+    <Button
+        style="@style/MyThemeButton"
+        android:elevation="5dp"
+        android:id="@+id/addSet"
+        android:layout_below="@id/addSetNameInput"
+        android:layout_centerHorizontal="true"
+        android:text="@string/addSet"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        />
+
+
+</RelativeLayout>
