@@ -16,4 +16,6 @@
     <string name="correct">Poprawne:</string>
     <string name="inserted">Podane:</string>
     <string name="exit">Wyjdź</string>
+    <string name="remain">Pozostało: </string>
+    <string name="hint">💡</string>
 </resources>

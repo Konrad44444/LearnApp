@@ -21,15 +21,15 @@ import java.util.HashMap;
 public class LearnActivity extends AppCompatActivity {
     private final String MESSAGE = "tableName";
     private SetsDb db = new SetsDb(this);
-    private Button readyButton;
-    private EditText definition;
-    private TextView description, correct, inserted;
+    private Button readyButton, hintButton;
+    private EditText definitionTextEdit;
+    private TextView descriptionTextView, correctAfterCheck, insertedAfterCheck, remainText;
     private HashMap<String, String> defDescList = new HashMap<>();
-    private ArrayList<String> definitions = new ArrayList<>();
+    private ArrayList<String> definitionsArray = new ArrayList<>();
     private String tableName;
     private RelativeLayout check, mainLay;
-    int currentWord = -1;
-    boolean wasGuessed = false, doLoop = true, goNext = false;
+    int currentWord = -1, notCorrectCnt = 0;
+    boolean wasGuessed = false;
 
 
     @Override
@@ -38,14 +38,16 @@ public class LearnActivity extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         Intent intent = getIntent();
 
-        definition = findViewById(R.id.def); //TextEdit przed wpisaniem
-        description = findViewById(R.id.desc); //TextView przed wpisaniem
+        definitionTextEdit = findViewById(R.id.def); //TextEdit przed wpisaniem
+        descriptionTextView = findViewById(R.id.desc); //TextView przed wpisaniem
         readyButton = findViewById(R.id.readyButton); //Button
         tableName = intent.getStringExtra(MESSAGE);
         check = findViewById(R.id.check); //layout po wpisaniu
         mainLay = findViewById(R.id.mainLayout); //layout przed wpisaniem
-        correct = findViewById(R.id.correct); //TextView w check
-        inserted = findViewById(R.id.inserted); //TextVew w check
+        correctAfterCheck = findViewById(R.id.correct); //TextView w check
+        insertedAfterCheck = findViewById(R.id.inserted); //TextVew w check
+        remainText = findViewById(R.id.remainText); //wyświetlanie liczby pozostałych słów
+        hintButton = findViewById(R.id.hintButton); //podpowiedź - pierwsza litera
 
         db.open();
         Cursor cursor = db.getDataFromTable(tableName);
@@ -53,25 +55,26 @@ public class LearnActivity extends AppCompatActivity {
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
             defDescList.put(cursor.getString(1), cursor.getString(2));
-            definitions.add(cursor.getString(1));
+            definitionsArray.add(cursor.getString(1));
             cursor.moveToNext();
         }
         db.close();
 
         readyButton.setOnClickListener(View -> {
             check.setVisibility(View.VISIBLE);
-            String insertedWord = definition.getText().toString();
+            String insertedWord = definitionTextEdit.getText().toString();
 
-            correct.setText(definitions.get(currentWord));
-            inserted.setText(insertedWord);
+            correctAfterCheck.setText(definitionsArray.get(currentWord));
+            insertedAfterCheck.setText(insertedWord);
 
-            if(definitions.get(currentWord).equals(insertedWord)) {
+            if(definitionsArray.get(currentWord).equals(insertedWord)) {
                 check.setBackground(ContextCompat.getDrawable(this, R.drawable.border_green));
-                inserted.setTextColor(ContextCompat.getColor(this, R.color.greenBorder));
+                insertedAfterCheck.setTextColor(ContextCompat.getColor(this, R.color.greenBorder));
                 wasGuessed = true;
             } else {
                 check.setBackground(ContextCompat.getDrawable(this, R.drawable.border_red));
-                inserted.setTextColor(ContextCompat.getColor(this, R.color.redBorder));
+                insertedAfterCheck.setTextColor(ContextCompat.getColor(this, R.color.redBorder));
+                notCorrectCnt++;
                 wasGuessed = false;
             }
         });
@@ -83,15 +86,25 @@ public class LearnActivity extends AppCompatActivity {
         currentWord = displayRandom(currentWord, wasGuessed);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+        hintButton.setOnClickListener(View -> {
+           if(String.valueOf(definitionTextEdit.getText()).equals("")) {
+                String word = definitionsArray.get(currentWord);
+                word = String.valueOf(word.charAt(0));
+                definitionTextEdit.setText(word);
+
+                definitionTextEdit.setSelection(definitionTextEdit.getText().length());
+           }
+        });
     }
 
     private int displayRandom(int prev, boolean wasGuessed) {
         mainLay.setVisibility(View.VISIBLE);
         check.setVisibility(View.GONE);
-        definition.setText("");
-        definition.requestFocus();
+        definitionTextEdit.setText("");
+        definitionTextEdit.requestFocus();
 
-        if(definitions.size() == 0) {
+        if(definitionsArray.size() == 0) {
             Toast.makeText(this, "Koniec nauki", Toast.LENGTH_LONG).show();
             SystemClock.sleep(50);
 
@@ -101,10 +114,16 @@ public class LearnActivity extends AppCompatActivity {
             finish();
         }
 
-        if(wasGuessed && prev > -1 && prev < definitions.size()) definitions.remove(prev);
+        if(wasGuessed && prev > -1 && prev < definitionsArray.size()) definitionsArray.remove(prev);
 
-        int rand = (int) ((Math.random() * 10000) % definitions.size()) ;
-        description.setText(defDescList.get(definitions.get(rand)));
+        int rand = (int) ((Math.random() * 10000) % definitionsArray.size()) ;
+        descriptionTextView.setText(defDescList.get(definitionsArray.get(rand)));
+
+        remainText.setText("");
+        remainText.setText(R.string.remain);
+        remainText.append(" ");
+        remainText.append( String.valueOf(definitionsArray.toArray().length));
+
         return rand;
     }
 }
