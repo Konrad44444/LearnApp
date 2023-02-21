@@ -28,7 +28,6 @@
     <Button
         android:id="@+id/addElement"
         style="@style/MyThemeButton"
-        android:elevation="5dp"
         android:text="@string/addElement"
         android:layout_below="@id/showSetName"
         android:layout_centerHorizontal="true"
@@ -38,7 +37,6 @@
     <Button
         android:id="@+id/learn"
         style="@style/MyThemeButton"
-        android:elevation="5dp"
         android:text="@string/learn"
         android:layout_below="@id/addElement"
         android:layout_centerHorizontal="true"
@@ -48,7 +46,6 @@
     <Button
         android:id="@+id/deleteSet"
         style="@style/MyThemeButton"
-        android:elevation="5dp"
         android:text="@string/deleteSet"
         android:layout_below="@id/learn"
         android:layout_centerHorizontal="true"
@@ -58,7 +55,6 @@
     <Button
         android:id="@+id/returnToMain"
         style="@style/MyThemeButton"
-        android:elevation="5dp"
         android:text="@string/returnToMain"
         android:layout_below="@id/deleteSet"
         android:layout_centerHorizontal="true"

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+    <item android:left="2dp" android:top="5dp">
+        <shape>
+            <gradient android:angle="270"
+                android:startColor="@color/buttonShadow2"
+                android:endColor="@color/buttonShadow1" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <item android:bottom="4dp" android:right="2dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/mainButtonBorder"/>
-            <corners android:radius="10dp"/>
+            <corners android:radius="8dp"/>
         </shape>
-
-    </item>
-    <item android:left="2dp" android:right="2dp"  android:top="2dp" android:bottom="2dp">
+    </item >
+    <item android:left="2dp" android:right="4dp"  android:top="2dp" android:bottom="6dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/mainButtonBack"/>
-            <corners android:radius="10dp"/>
+            <corners android:radius="7dp"/>
         </shape>
     </item>
 </layer-list>

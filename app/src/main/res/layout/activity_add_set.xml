@@ -40,7 +40,6 @@
 
     <Button
         style="@style/MyThemeButton"
-        android:elevation="5dp"
         android:id="@+id/addSet"
         android:layout_below="@id/addSetNameInput"
         android:layout_centerHorizontal="true"

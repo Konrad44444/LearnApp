@@ -18,4 +18,5 @@
     <string name="exit">Wyjdź</string>
     <string name="remain">Pozostało: </string>
     <string name="hint">💡</string>
+    <string name="endingText">Zestaw ukończony</string>
 </resources>
