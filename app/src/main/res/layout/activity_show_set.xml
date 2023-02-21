@@ -55,7 +55,7 @@
     <Button
         android:id="@+id/returnToMain"
         style="@style/MyThemeButton"
-        android:text="@string/returnToMain"
+        android:text="@string/ret"
         android:layout_below="@id/deleteSet"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"

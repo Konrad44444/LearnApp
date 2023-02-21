@@ -63,7 +63,7 @@
         android:id="@+id/goToAddElementActivity"
         android:layout_below="@id/addElementButton"
         android:layout_centerHorizontal="true"
-        android:text="@string/returnToMain"
+        android:text="@string/ret"
         android:layout_marginTop="25dp"
         />
 

@@ -149,23 +149,133 @@
             android:minHeight="6500dp"
             android:elevation="6dp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:visibility="gone"
             >
 
             <TextView
+                android:id="@+id/endOfTestTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                style="@style/MyThemeText"
                 android:text="@string/endingText"
-                android:textColor="@color/darkText"
-                android:background="@color/mainButtonBack"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:layout_marginTop="50dp"
-                android:shadowColor="@color/textShadow"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
                 />
+
+            <LinearLayout
+                android:id="@+id/wordsCntLinLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/endOfTestTextView"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyThemeText"
+                    android:text="@string/wordsInSet"
+                    android:textSize="20sp"
+                    />
+
+                <TextView
+                    android:id="@+id/wordsCnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyThemeText"
+                    android:textSize="20sp"
+                    android:textColor="@color/greenBorder"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyThemeText"
+                    android:text="@string/words"
+                    android:textSize="20sp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/errCntLinLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wordsCntLinLay"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyThemeText"
+                    android:text="@string/errorCnt"
+                    android:textSize="20sp"
+                    />
+
+                <TextView
+                    android:id="@+id/errCnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyThemeText"
+                    android:textSize="20sp"
+                    android:textColor="@color/redBorder"
+                    />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/mostErrorsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MyThemeText"
+                android:layout_below="@id/errCntLinLay"
+                android:layout_marginTop="25dp"
+                android:text="@string/mostErrorText"
+                android:textSize="25sp"
+            />
+
+            <TextView
+                android:id="@+id/mostErrDefinition"
+                android:layout_width="wrap_content"
+                android:maxWidth="300dp"
+                android:layout_height="wrap_content"
+                style="@style/MyThemeText"
+                android:textSize="25sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/redBorder"
+                android:layout_below="@id/mostErrorsTextView"
+                />
+
+            <TextView
+                android:id="@+id/mostErrDescription"
+                android:layout_width="wrap_content"
+                android:maxWidth="300dp"
+                android:layout_height="wrap_content"
+                style="@style/MyThemeText"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textShadow"
+                android:layout_below="@id/mostErrDefinition"
+                />
+
+            <Button
+                android:id="@+id/goToMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MyThemeSetButton"
+                android:layout_below="@id/mostErrDescription"
+                android:layout_centerHorizontal="true"
+                android:text="@string/retToMain"
+                android:textColor="@color/darkText"
+                android:layout_marginTop="50dp"
+                />
+
 
         </RelativeLayout>
 

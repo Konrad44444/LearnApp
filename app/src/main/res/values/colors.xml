@@ -19,6 +19,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="textShadow">#737373</color>
-    <color name="buttonShadow1">#E6DDDDDD</color>
+    <color name="buttonShadow1">#BEBCBCBC</color>
     <color name="buttonShadow2">#A6DCDCDC</color>
 </resources>

@@ -7,7 +7,7 @@
     <string name="addElement">Dodaj pojęcie</string>
     <string name="learn">Pisanie</string>
     <string name="deleteSet">Usuń zestaw</string>
-    <string name="returnToMain">Wróć</string>
+    <string name="ret">Wróć</string>
     <string name="addElementText">Dodawanie pojęcia</string>
     <string name="addDefHint">Podaj pojęcie</string>
     <string name="addDescHint">Podaj definicję</string>
@@ -19,4 +19,9 @@
     <string name="remain">Pozostało: </string>
     <string name="hint">💡</string>
     <string name="endingText">Zestaw ukończony</string>
+    <string name="wordsInSet">Zestaw liczy </string>
+    <string name="words"> słów</string>
+    <string name="errorCnt">Ilość błędów: </string>
+    <string name="mostErrorText">Najczęstszy błąd</string>
+    <string name="retToMain">Powrót do menu</string>
 </resources>
