@@ -158,6 +158,7 @@ public class LearnActivity extends AppCompatActivity {
     }
 
     private void drawEnd() {
+        //schowanie klawiatury
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 
