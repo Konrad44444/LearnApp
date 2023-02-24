@@ -11,40 +11,83 @@
     tools:context=".MainActivity"
     >
 
-    <Button
-        android:id="@+id/mainButton"
-        style="@style/MyThemeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/mainButtonText" />
+    <RelativeLayout
+        android:id="@+id/topLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:paddingBottom="25dp"
+        >
+
+        <Button
+            android:id="@+id/mainButton"
+            style="@style/MyThemeButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/mainButtonText" />
+
+
+        <TextView
+            android:id="@+id/setsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mainButton"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/darkText"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:shadowColor="@color/textShadow"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            />
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="350dp"
         android:layout_height="325dp"
-        android:layout_below="@id/mainButton"
+        android:layout_below="@id/topLay"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:paddingVertical="4dp">
+        >
 
-        <TableLayout
-            android:paddingVertical="4dp"
-            android:id="@+id/table"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@drawable/button_divider"
-            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
             />
+
+            <TableLayout
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/button_divider"
+                android:showDividers="middle"
+                />
+
+        </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/exitButton"
-        style="@style/MyThemeButton"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scroll"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/exit" />
+        android:elevation="10dp"
+        >
 
+        <Button
+            android:id="@+id/exitButton"
+            style="@style/MyThemeButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/exit" />
+
+    </RelativeLayout>
 </RelativeLayout>

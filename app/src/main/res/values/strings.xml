@@ -24,4 +24,6 @@
     <string name="errorCnt">Ilość błędów: </string>
     <string name="mostErrorText">Najczęstszy błąd</string>
     <string name="retToMain">Powrót do menu</string>
+    <string name="yourSets">Twoje zestawy</string>
+    <string name="noSets">Brak zestawów</string>
 </resources>

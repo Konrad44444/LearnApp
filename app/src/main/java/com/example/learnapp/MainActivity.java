@@ -10,6 +10,7 @@ import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void drawSets() {
         TableLayout table = findViewById(R.id.table);
+        TextView infText = findViewById(R.id.setsTextView);
         table.removeAllViews();
 
         db.open();
@@ -55,12 +57,9 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 3; i < sets.size(); i++) {
             Button button = new Button(new ContextThemeWrapper(this, R.style.MyThemeSetButton), null, 0);
             String setName = String.valueOf(sets.get(i));
-            //String setNameShown = setName.replace("@", " ");
+
             button.setText(setName);
-            button.setElevation(5);
-//            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) button.getLayoutParams();
-//            params.setMargins(0, 0, 0, 25);
-//            button.setLayoutParams(params);
+
             button.setOnClickListener(View -> {
                 Intent startSet = new Intent(getApplicationContext(), ShowSet.class);
                 startSet.putExtra("tableName", setName);
@@ -69,5 +68,11 @@ public class MainActivity extends AppCompatActivity {
             table.addView(button);
         }
         db.close();
+
+        if(sets.size() == 3) {
+            infText.setText(R.string.noSets);
+        } else {
+            infText.setText(R.string.yourSets);
+        }
     }
 }
