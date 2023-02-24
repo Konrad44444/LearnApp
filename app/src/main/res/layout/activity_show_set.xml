@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/showSetName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="75dp"
         android:textSize="35sp"
         android:textColor="@color/setNameText"
         android:shadowColor="@color/textShadow"
@@ -44,10 +44,22 @@
         />
 
     <Button
+        android:id="@+id/showSetElements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MyThemeButton"
+        android:text="@string/showSetsElements"
+        android:layout_below="@id/learn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+
+        />
+
+    <Button
         android:id="@+id/deleteSet"
         style="@style/MyThemeButton"
         android:text="@string/deleteSet"
-        android:layout_below="@id/learn"
+        android:layout_below="@id/showSetElements"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         />

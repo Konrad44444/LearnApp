@@ -34,9 +34,9 @@ public class LearnActivity extends AppCompatActivity {
     private ArrayList<String> definitionsArrayCopy = new ArrayList<>();
     private String tableName;
     private RelativeLayout check, mainLay, endLay;
-    int currentWord = -1, notCorrectCnt = 0;
-    boolean wasGuessed = false;
-    int[] errorsCount;
+    private int currentWord = -1, notCorrectCnt = 0;
+    private boolean wasGuessed = false;
+    private int[] errorsCount;
 
 
     @Override
@@ -77,6 +77,14 @@ public class LearnActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
         db.close();
+
+        if(definitionsArray.isEmpty()) {
+            Toast.makeText(this, "Zestaw pusty, dodaj pojęcia", Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(getApplicationContext(), ShowSet.class);
+            intent2.putExtra(MESSAGE, tableName);
+            startActivity(intent2);
+            finish();
+        }
 
         //ekran końcowy
         errorsCount = new int[c];

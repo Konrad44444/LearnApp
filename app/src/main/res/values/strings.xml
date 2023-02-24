@@ -26,4 +26,5 @@
     <string name="retToMain">Powrót do menu</string>
     <string name="yourSets">Twoje zestawy</string>
     <string name="noSets">Brak zestawów</string>
+    <string name="showSetsElements">Przeglądaj zestaw</string>
 </resources>

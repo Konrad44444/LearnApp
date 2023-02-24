@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <RelativeLayout
+        android:id="@+id/topLay"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:paddingBottom="25dp"
+        android:elevation="3dp"
+        >
+
+        <TextView
+            android:id="@+id/setName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/setNameText"
+            android:textSize="35sp"
+            android:shadowColor="@color/textShadow"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            />
+
+    </RelativeLayout>
+
+    <ExpandableListView
+        android:id="@+id/expandableListView"
+        android:layout_centerHorizontal="true"
+        android:layout_width="375dp"
+        android:layout_height="400dp"
+        android:layout_below="@id/topLay"
+        android:divider="@color/white"
+        android:dividerHeight="0.5dp"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+        />
+
+    <RelativeLayout
+        android:layout_below="@id/expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:elevation="10dp"
+        >
+
+        <Button
+            android:id="@+id/goBackButton"
+            style="@style/MyThemeButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ret"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

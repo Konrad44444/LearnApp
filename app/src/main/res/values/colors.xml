@@ -21,4 +21,5 @@
     <color name="textShadow">#737373</color>
     <color name="buttonShadow1">#BEBCBCBC</color>
     <color name="buttonShadow2">#A6DCDCDC</color>
+    <color name="defTextColor">#658EE1</color>
 </resources>

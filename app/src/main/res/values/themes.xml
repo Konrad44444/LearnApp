@@ -17,7 +17,7 @@
     </style>
 
     <style name="MyThemeButton" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_width">220dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingHorizontal">30dp</item>
         <item name="android:paddingVertical">15dp</item>
