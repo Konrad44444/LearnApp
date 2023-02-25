@@ -27,4 +27,6 @@
     <string name="yourSets">Twoje zestawy</string>
     <string name="noSets">Brak zestawów</string>
     <string name="showSetsElements">Przeglądaj zestaw</string>
+    <string name="cancel">Anuluj</string>
+    <string name="save">Zapisz</string>
 </resources>

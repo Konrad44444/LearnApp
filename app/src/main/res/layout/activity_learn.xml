@@ -72,11 +72,10 @@
 
             <Button
                 android:id="@+id/hintButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/MyThemeButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/lightbulb"
                 android:layout_marginStart="15dp"
-                android:text="@string/hint"
                 />
         </LinearLayout>
 

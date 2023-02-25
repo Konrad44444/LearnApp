@@ -89,6 +89,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int listPosition, int i1) {
-        return false;
+        return true;
     }
 }

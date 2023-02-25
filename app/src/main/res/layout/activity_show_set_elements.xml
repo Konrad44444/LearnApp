@@ -44,6 +44,7 @@
         android:divider="@color/white"
         android:dividerHeight="0.5dp"
         android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+        android:childDivider="@color/mainBackground"
         />
 
     <RelativeLayout
@@ -62,6 +63,81 @@
             android:text="@string/ret"
             android:layout_centerInParent="true"
             />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:paddingVertical="20dp"
+        android:id="@+id/editLayout"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ending_layout_background"
+        android:elevation="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/editLayoutDef"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/setButtonBorder"
+            android:textColor="@color/setNameText"
+            android:textSize="22sp"
+            android:inputType="text"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <EditText
+            android:id="@+id/editLayoutDesc"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/setButtonBorder"
+            android:textColor="@color/textShadow"
+            android:textSize="20sp"
+            android:inputType="text"
+            android:layout_below="@id/editLayoutDef"
+
+            />
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/editLayoutDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/mainButtonBack"
+            android:layout_centerHorizontal="true"
+            >
+
+            <Button
+                style="@style/MyThemeSetButton"
+                android:id="@+id/editCancelButton"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textColor="@color/darkText"
+                android:layout_marginVertical="15dp"
+                />
+
+            <Button
+                style="@style/MyThemeSetButton"
+                android:id="@+id/editSaveButton"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textColor="@color/darkText"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="20dp"
+                />
+
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 

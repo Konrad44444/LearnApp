@@ -15,8 +15,9 @@
         android:id="@+id/topLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
+        android:elevation="3dp"
         android:paddingBottom="5dp"
+
         >
 
         <Button
