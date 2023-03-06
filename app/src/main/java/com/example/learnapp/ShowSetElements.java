@@ -34,7 +34,7 @@ public class ShowSetElements extends AppCompatActivity {
     private final String DESC = "description";
     private String tableName;
     private Set set;
-    private SetsDb db = new SetsDb(this);
+    private final SetsDb db = new SetsDb(this);
     private TextView setNameTextView;
     private Button goBackButton, editButton;
     private ExpandableListAdapter expandableListAdapter;
@@ -56,9 +56,9 @@ public class ShowSetElements extends AppCompatActivity {
 
         //inicjalizacja obiektów
         tableName = intent.getStringExtra(MESSAGE);
-        setNameTextView = (TextView) findViewById(R.id.setName);
-        goBackButton = (Button) findViewById(R.id.goBackButton);
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        setNameTextView = findViewById(R.id.setName);
+        goBackButton = findViewById(R.id.goBackButton);
+        expandableListView = findViewById(R.id.expandableListView);
         definitionsList = new ArrayList<>();
         defDescHashMap = new HashMap<>();
 
@@ -141,6 +141,7 @@ public class ShowSetElements extends AppCompatActivity {
     private void showExpandableList() {
         //pobranie danych z bazy
         set = new Set(tableName, this);
+        set.getData();
         definitionsList = set.getDefinitions();
         defDescHashMap = set.getDefDescMap();
         int setQuantity = set.getQuantity();

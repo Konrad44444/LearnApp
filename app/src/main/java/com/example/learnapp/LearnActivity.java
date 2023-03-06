@@ -1,5 +1,6 @@
 package com.example.learnapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -63,6 +64,7 @@ public class LearnActivity extends AppCompatActivity {
 
         //załadowanie zestawu
         set = new Set(tableName, this);
+        set.getData();
         definitionsArray = set.getDefinitions();
         definitionsArrayCopy = set.getDefinitions();
         defDescList = set.getDefDescMap();
@@ -96,9 +98,7 @@ public class LearnActivity extends AppCompatActivity {
         });
 
         //kliknięcie w pole sprawdzenia (zielone lub czerwone)
-        check.setOnClickListener(View -> {
-            currentWord = displayRandom(currentWord, wasGuessed);
-        });
+        check.setOnClickListener(View -> currentWord = displayRandom(currentWord, wasGuessed));
 
         //wylosowanie słowa na początku
         currentWord = displayRandom(currentWord, wasGuessed);
@@ -208,15 +208,12 @@ public class LearnActivity extends AppCompatActivity {
     }
 
     //maksymalna ilość błędów
-    private int maxIndex(int[] array) {
-        if(array.length != 0) {
-            int max = 0;
-            for(int i = 1; i < array.length; i++) {
-                if(array[i] > array[max]) max = i;
-            }
-
-            return max;
+    private int maxIndex(@NonNull int[] array) {
+        int max = 0;
+        for(int i = 1; i < array.length; i++) {
+            if(array[i] > array[max]) max = i;
         }
-        return -1;
+
+        return max;
     }
 }
