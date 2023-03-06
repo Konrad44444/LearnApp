@@ -33,6 +33,7 @@ public class ShowSetElements extends AppCompatActivity {
     private final String DEF = "definition";
     private final String DESC = "description";
     private String tableName;
+    private Set set;
     private SetsDb db = new SetsDb(this);
     private TextView setNameTextView;
     private Button goBackButton, editButton;
@@ -53,6 +54,7 @@ public class ShowSetElements extends AppCompatActivity {
         setContentView(R.layout.activity_show_set_elements);
         Intent intent = getIntent();
 
+        //inicjalizacja obiektów
         tableName = intent.getStringExtra(MESSAGE);
         setNameTextView = (TextView) findViewById(R.id.setName);
         goBackButton = (Button) findViewById(R.id.goBackButton);
@@ -60,8 +62,10 @@ public class ShowSetElements extends AppCompatActivity {
         definitionsList = new ArrayList<>();
         defDescHashMap = new HashMap<>();
 
+        //nazwa zestawu
         setNameTextView.setText(tableName);
 
+        //powrót do ekranu zestawu
         goBackButton.setOnClickListener(View -> {
             Intent intent1 = new Intent(getApplicationContext(), ShowSet.class);
             intent1.putExtra(MESSAGE, tableName);
@@ -79,16 +83,17 @@ public class ShowSetElements extends AppCompatActivity {
         editDef = findViewById(R.id.editLayoutDef);
         editDesc = findViewById(R.id.editLayoutDesc);
 
-        LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View listView = layoutInflater.inflate(R.layout.list_desc_layout, null);
-        editButton = listView.findViewById(R.id.editButton);
+        //kliknięcie w przycisk ołówka - nie działa
+//        LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View listView = layoutInflater.inflate(R.layout.list_desc_layout, null);
+//        editButton = listView.findViewById(R.id.editButton);
+//
+//        editButton.setOnClickListener(View -> {
+//            editLayout.setVisibility(android.view.View.VISIBLE);
+//        });
 
-        editButton.setOnClickListener(View -> {
-            editLayout.setVisibility(android.view.View.VISIBLE);
-        });
 
-
-
+        //kliknięcie w pojęcie (opis)
         expandableListView.setOnChildClickListener((parent, view, groupPosition, childPosition, id) -> {
             editLayout.setVisibility(View.VISIBLE);
 
@@ -105,6 +110,7 @@ public class ShowSetElements extends AppCompatActivity {
             return false;
         });
 
+        //anulowanie edycji
         editCancelButton.setOnClickListener(View -> {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
@@ -112,6 +118,7 @@ public class ShowSetElements extends AppCompatActivity {
             editLayout.setVisibility(android.view.View.GONE);
         });
 
+        //zmiana danych w bazie
         editSaveButton.setOnClickListener(View -> {
             String newDef = editDef.getText().toString();
             String newDesc = editDesc.getText().toString();
@@ -126,14 +133,20 @@ public class ShowSetElements extends AppCompatActivity {
 
             editCancelButton.callOnClick();
 
+            //ponowne załadowanie listy po edycji
             recreate();
         });
     }
 
     private void showExpandableList() {
-        getDataFromDB();
+        //pobranie danych z bazy
+        set = new Set(tableName, this);
+        definitionsList = set.getDefinitions();
+        defDescHashMap = set.getDefDescMap();
+        int setQuantity = set.getQuantity();
 
-        if(definitionsList.isEmpty()) {
+        //zestaw pusty
+        if(setQuantity == 0) {
             Toast.makeText(this, "Zestaw pusty, dodaj pojęcia", Toast.LENGTH_SHORT).show();
             Intent intent2 = new Intent(getApplicationContext(), ShowSet.class);
             intent2.putExtra(MESSAGE, tableName);
@@ -141,21 +154,9 @@ public class ShowSetElements extends AppCompatActivity {
             finish();
         }
 
+        //utworzenie listy
         expandableListAdapter = new ExpandableListAdapter(this, definitionsList, defDescHashMap);
 
         expandableListView.setAdapter(expandableListAdapter);
-    }
-
-    private void getDataFromDB() {
-        db.open();
-        Cursor cursor = db.getDataFromTable(tableName);
-
-        cursor.moveToFirst();
-        while(!cursor.isAfterLast()) {
-            defDescHashMap.put(cursor.getString(1), cursor.getString(2));
-            definitionsList.add(cursor.getString(1));
-            cursor.moveToNext();
-        }
-        db.close();
     }
 }

@@ -5,9 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -17,21 +15,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class LearnActivity extends AppCompatActivity {
     private final String MESSAGE = "tableName";
-    private SetsDb db = new SetsDb(this);
+    private Set set;
     private Button readyButton, hintButton, goToMenu;
     private EditText definitionTextEdit;
     private TextView descriptionTextView, correctAfterCheck, insertedAfterCheck, remainText, wordsCnt, errCnt, mostErrDef, mostErrDesc;
-    private HashMap<String, String> defDescList = new HashMap<>();
-    private ArrayList<String> definitionsArray = new ArrayList<>();
-    private ArrayList<String> definitionsArrayCopy = new ArrayList<>();
+    private HashMap<String, String> defDescList;
+    private ArrayList<String> definitionsArray;
+    private ArrayList<String> definitionsArrayCopy;
     private String tableName;
     private RelativeLayout check, mainLay, endLay;
     private int currentWord = -1, notCorrectCnt = 0;
@@ -45,6 +41,7 @@ public class LearnActivity extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         Intent intent = getIntent();
 
+        //inicjalizacja obiektów
         definitionTextEdit = findViewById(R.id.def); //TextEdit przed wpisaniem
         descriptionTextView = findViewById(R.id.desc); //TextView przed wpisaniem
         readyButton = findViewById(R.id.readyButton); //Button
@@ -56,7 +53,7 @@ public class LearnActivity extends AppCompatActivity {
         remainText = findViewById(R.id.remainText); //wyświetlanie liczby pozostałych słów
         hintButton = findViewById(R.id.hintButton); //podpowiedź - pierwsza litera
 
-        //ekran końcowy
+        //inicjalizacja obiektów - ekran końcowy
         endLay = findViewById(R.id.endingLayout);
         goToMenu=findViewById(R.id.goToMenu);
         wordsCnt = findViewById(R.id.wordsCnt);
@@ -64,33 +61,29 @@ public class LearnActivity extends AppCompatActivity {
         mostErrDef = findViewById(R.id.mostErrDefinition);
         mostErrDesc = findViewById(R.id.mostErrDescription);
 
-        db.open();
-        Cursor cursor = db.getDataFromTable(tableName);
+        //załadowanie zestawu
+        set = new Set(tableName, this);
+        definitionsArray = set.getDefinitions();
+        definitionsArrayCopy = set.getDefinitions();
+        defDescList = set.getDefDescMap();
+        int setQuantity = set.getQuantity();
 
-        cursor.moveToFirst();
-        int c = 0;
-        while(!cursor.isAfterLast()) {
-            defDescList.put(cursor.getString(1), cursor.getString(2));
-            definitionsArray.add(cursor.getString(1));
-            definitionsArrayCopy.add(cursor.getString(1));
-            c++;
-            cursor.moveToNext();
-        }
-        db.close();
-
-        if(definitionsArray.isEmpty()) {
+        //zestaw pusty
+        if(setQuantity == 0) {
             Toast.makeText(this, "Zestaw pusty, dodaj pojęcia", Toast.LENGTH_SHORT).show();
+
             Intent intent2 = new Intent(getApplicationContext(), ShowSet.class);
             intent2.putExtra(MESSAGE, tableName);
             startActivity(intent2);
             finish();
         }
 
-        //ekran końcowy
-        errorsCount = new int[c];
+        //ekran końcowy - wyświetlenie błędów
+        errorsCount = new int[setQuantity]; //tablica do zliczania błędów
         Arrays.fill(errorsCount, 0);//zainicjalizowane zerami
 
 
+        //przycisk gotowe - sprawdzenie czy podano poprawne słowo
         readyButton.setOnClickListener(View -> {
             check.setVisibility(android.view.View.VISIBLE);
             String insertedWord = definitionTextEdit.getText().toString();
@@ -98,25 +91,19 @@ public class LearnActivity extends AppCompatActivity {
             correctAfterCheck.setText(definitionsArray.get(currentWord));
             insertedAfterCheck.setText(insertedWord);
 
-            if(definitionsArray.get(currentWord).equals(insertedWord)) {
-                check.setBackground(ContextCompat.getDrawable(this, R.drawable.border_green));
-                insertedAfterCheck.setTextColor(ContextCompat.getColor(this, R.color.greenBorder));
-                wasGuessed = true;
-            } else {
-                check.setBackground(ContextCompat.getDrawable(this, R.drawable.border_red));
-                insertedAfterCheck.setTextColor(ContextCompat.getColor(this, R.color.redBorder));
-                errorsCount[currentWord]++;
-                notCorrectCnt++;
-                wasGuessed = false;
-            }
+            //akcja po kliknięciu gotowe - jeśli poprawne to zielonie, jeśli nie to czerwone
+            afterReadyClick(insertedWord);
         });
 
+        //kliknięcie w pole sprawdzenia (zielone lub czerwone)
         check.setOnClickListener(View -> {
             currentWord = displayRandom(currentWord, wasGuessed);
         });
 
+        //wylosowanie słowa na początku
         currentWord = displayRandom(currentWord, wasGuessed);
 
+        //włączenie klawiatury
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         hintButton.setOnClickListener(View -> {
@@ -138,30 +125,37 @@ public class LearnActivity extends AppCompatActivity {
     }
 
     private int displayRandom(int prev, boolean wasGuessed) {
+        //przygotowanie layoutu
         mainLay.setVisibility(View.VISIBLE);
         check.setVisibility(View.GONE);
         definitionTextEdit.setText("");
         definitionTextEdit.requestFocus();
 
+        //słowo poprawnie podane, nie jest to pierwsze słowo i tablica nie jest pusta - usunięcie pojęcia
         if (wasGuessed && prev > -1 && prev < definitionsArray.size())
             definitionsArray.remove(prev);
 
+        //ekran końcowy - wyświetlenie
         if(definitionsArray.toArray().length == 0) {
             //Toast.makeText(this, "pusty", Toast.LENGTH_SHORT).show();
             drawEnd();
 
-
             return -1;
         }
 
-        int rand = (int) ((Math.random() * 10000) % definitionsArray.size());
+        //wygenerowanie losowej liczby
+        int rand = (int) ((Math.random() * 1000000) % definitionsArray.size());
+
+        //wyświetlenie definicji (opisu)
         descriptionTextView.setText(defDescList.get(definitionsArray.get(rand)));
 
+        //ilość słów, które zostały
         remainText.setText("");
         remainText.setText(R.string.remain);
         remainText.append(" ");
         remainText.append(String.valueOf(definitionsArray.toArray().length));
 
+        //zwrócenie indeksu wylosowanego słowa
         return rand;
     }
 
@@ -196,6 +190,24 @@ public class LearnActivity extends AppCompatActivity {
         }
     }
 
+    private void afterReadyClick(String insertedWord) {
+        if(definitionsArray.get(currentWord).equals(insertedWord)) {
+            check.setBackground(ContextCompat.getDrawable(this, R.drawable.border_green));
+            insertedAfterCheck.setTextColor(ContextCompat.getColor(this, R.color.greenBorder));
+
+            wasGuessed = true;
+        } else {
+            check.setBackground(ContextCompat.getDrawable(this, R.drawable.border_red));
+            insertedAfterCheck.setTextColor(ContextCompat.getColor(this, R.color.redBorder));
+
+            errorsCount[currentWord]++;
+            notCorrectCnt++;
+
+            wasGuessed = false;
+        }
+    }
+
+    //maksymalna ilość błędów
     private int maxIndex(int[] array) {
         if(array.length != 0) {
             int max = 0;
