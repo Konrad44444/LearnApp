@@ -66,7 +66,7 @@ public class LearnActivity extends AppCompatActivity {
         set = new Set(tableName, this);
         set.getData();
         definitionsArray = set.getDefinitions();
-        definitionsArrayCopy = set.getDefinitions();
+        definitionsArrayCopy = new ArrayList<>(definitionsArray);
         defDescList = set.getDefDescMap();
         int setQuantity = set.getQuantity();
 

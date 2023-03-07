@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class ShowSet extends AppCompatActivity {
     private final String MESSAGE = "tableName";
-    private Button addElement, learn, deleteSet, goBack, showSetElementsButton;
+    private Button addElement, learn, deleteSet, goBack, showSetElementsButton, test;
     private TextView setName;
     private String tableName, setNameShown;
     private Intent intent;
@@ -27,6 +27,7 @@ public class ShowSet extends AppCompatActivity {
         goBack = findViewById(R.id.returnToMain);
         setName = findViewById(R.id.showSetName);
         showSetElementsButton = (Button) findViewById(R.id.showSetElements);
+        test = findViewById(R.id.test);
         intent = getIntent();
         tableName = intent.getStringExtra(MESSAGE);
         //setNameShown = tableName.replace("@", " ");
@@ -58,6 +59,12 @@ public class ShowSet extends AppCompatActivity {
             db.close();
 
             goBack.callOnClick();
+        });
+
+        test.setOnClickListener(View -> {
+            Intent intent4 = new Intent(getApplicationContext(), TestActivity.class);
+            intent4.putExtra(MESSAGE, tableName);
+            startActivity(intent4);
         });
 
         goBack.setOnClickListener(View -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));

@@ -44,12 +44,21 @@
         />
 
     <Button
+        android:id="@+id/test"
+        style="@style/MyThemeButton"
+        android:text="@string/test"
+        android:layout_below="@id/learn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
         android:id="@+id/showSetElements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/MyThemeButton"
         android:text="@string/showSetsElements"
-        android:layout_below="@id/learn"
+        android:layout_below="@id/test"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
 

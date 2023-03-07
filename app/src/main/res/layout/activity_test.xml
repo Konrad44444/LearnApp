@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:id="@+id/setName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="50dp"
+        style="@style/MyThemeText"
+        android:background="@color/mainBackground"
+        />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setName"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="25dp"
+        android:textColor="@color/textShadow"
+        />
+
+    <Button
+        android:id="@+id/answer1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/answer2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/answer1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="10dp"
+        />
+
+    <Button
+        android:id="@+id/answer3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/answer2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="10dp"
+        />
+
+    <Button
+        android:id="@+id/answer4"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/answer3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="10dp"
+        />
+
+    <Button
+        android:id="@+id/goNext"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:layout_below="@id/answer4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        style="@style/MyThemeSetButton"
+        android:visibility="invisible"
+        />
+
+
+</RelativeLayout>
